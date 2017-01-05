@@ -12,19 +12,19 @@ require : {
 
 Update Composer :
 ```
-    composer update
+composer update
 ```
 
 The next required step is to add the service provider to `config/app.php` :
 ```
-    BladeBootstrap\TwitterBootstrap\TwitterBootstrapServiceProvider::class,,
+BladeBootstrap\TwitterBootstrap\TwitterBootstrapServiceProvider::class,,
 ```
 
 ### Publish ###
 
 The last required step is to publish views and assets in your application with :
 ```
-    php artisan vendor:publish
+php artisan vendor:publish
 ```
 
 Congratulations, you have successfully installed **BladeTwitterBootstrap** !
