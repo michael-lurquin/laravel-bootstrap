@@ -1,4 +1,4 @@
-## BladeTwitterBootstrap ##
+## Laravel Blade - TwitterBootstrap ##
 
 Expand Blade to generate Twitter Bootstrap code
 
