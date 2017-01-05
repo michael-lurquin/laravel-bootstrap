@@ -32,6 +32,23 @@ The last required step is to publish views and assets in your application with :
 php artisan vendor:publish
 ```
 
+### Configuration ###
+
+A configuration is possible to change the default values of parameters passed to Blade directives
+
+```php
+return [
+    'bootstrap-version' => '3.3.7',
+    'default_values' => [
+        'button' => [
+            'label' => '',
+            'class' => 'default',
+            'glyph' => '',
+        ],
+    ],
+];
+```
+
 Congratulations, you have successfully installed **BladeTwitterBootstrap** !
 
 ### License
@@ -41,6 +58,15 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 ## Documentation ##
 
 ### Syntax ###
+
+| Directive Blade   |      Options      |  Optionnal    |
+|-------------------|:------------------|:--------------|
+| @glyph            | glyph             | NO            |
+| @button           | label             | YES (NULL)    |
+|                   | class             | YES (default) |
+|                   | glyph             | YES (NULL)    |
+
+### Examples ###
 
 You can set single or double quotation marks in Blade expressions
 
