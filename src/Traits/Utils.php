@@ -28,19 +28,29 @@ trait Utils
         return $string;
     }
 
-    private function parseButtonExpressionBlade($type, $expression)
+    private function parseExpressionBlade($expression, $type = FALSE)
     {
-        $arr = explode(', ', $expression);
+        $result = FALSE;
 
-        $options = $this->app->config["laravel-bootstrap.default_values.$type"];
-
-        $result = [];
-        $index = 0;
-
-        foreach ($options as $key => $value)
+        if ( !empty($expression) )
         {
-            $result[$key] = empty($arr[$index]) ? $value : $this->removeQuotes($arr[$index]);
-            $index++;
+            $arr = explode(', ', $expression);
+
+            if ( $type )
+            {
+                $options = $this->app->config["laravel-bootstrap.default_values.$type"];
+                $index = 0;
+
+                foreach ($options as $key => $value)
+                {
+                    $result[$key] = empty($arr[$index]) ? $value : $this->removeQuotes($arr[$index]);
+                    $index++;
+                }
+            }
+            else
+            {
+                $result = $this->removeQuotes($expression);
+            }
         }
 
         return $result;
