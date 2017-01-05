@@ -6,7 +6,7 @@ Add **BladeTwitterBootstrap** to your `composer.json` file to require :
 ```
 require : {
     "laravel/framework": "~5.3",
-    "michael-lurquin/laravel-bootstrap": "dev-master"
+    "michael-lurquin/laravel-bootstrap": "dev"
 }
 ```
 
