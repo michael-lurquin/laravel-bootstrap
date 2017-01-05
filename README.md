@@ -45,8 +45,8 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 You can set single or double quotation marks in Blade expressions
 
 ```php
-@button("OK for Mr 'John Doe'", "primary")  // <button type='button' class='btn btn-primary'>OK for Mr 'John Doe'</button>
-@button('Valid', 'success')                 // <button type='button' class='btn btn-success'>Valid</button>
-@button(Cancel, 'danger')                   // <button type='button' class='btn btn-danger'>Cancel</button>
-@button("OK")                               // <button type='button' class='btn btn-default'>OK</button>
+@button('One')                  // <button type='button' class='btn btn-default'>One</button>
+@button("Two", danger)          // <button type='button' class='btn btn-danger'>Two</button>
+@button(Three, success, star)   // <button type='button' class='btn btn-success'><span class='glyphicon glyphicon-star' aria-hidden='true'></span> Three</button>
+@button(, primary, search)      // <button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-search' aria-hidden='true'></span> </button>
 ```
