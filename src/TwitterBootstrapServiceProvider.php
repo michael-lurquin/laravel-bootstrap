@@ -22,21 +22,15 @@ class TwitterBootstrapServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::directive('glyph', function ($expression) {
+
             return $this->glyph($expression);
         });
 
         Blade::directive('button', function ($expression) {
 
-            list($value, $class) = $this->parseExpressionBlade($expression);
+            list($label, $class, $glyph) = array_values($this->parseExpressionBlade($expression));
 
-            return $this->button($value, $class);
-        });
-
-        Blade::directive('buttonGlyph', function ($expression) {
-
-            list($glyph, $class) = $this->parseExpressionBlade($expression);
-
-            return $this->buttonGlyph($glyph, $class);
+            return $this->button($label, $class, $glyph);
         });
 
         // Resources
