@@ -5,6 +5,7 @@ namespace BladeBootstrap\TwitterBootstrap\Traits;
 use Illuminate\Support\Facades\Blade;
 use BladeBootstrap\TwitterBootstrap\Traits\BladeTwitterBootstrap;
 use BladeBootstrap\TwitterBootstrap\Traits\Utils;
+use Illuminate\Support\Str;
 
 trait DirectivesBlade
 {
@@ -15,23 +16,19 @@ trait DirectivesBlade
     {
         Blade::directive('glyph', function ($expression) {
 
-            $glyph = $this->parseExpressionBlade($expression);
+            $arguments = $this->parse($expression);
 
-            return $this->glyph($glyph);
+            list($glyph, $args) = $this->getArguments($arguments);
+
+            return $this->glyph($glyph, $args);
         });
 
-        Blade::directive('button', function ($expression) {
+        Blade::directive('button', function($expression) {
 
-            list($label, $class, $glyph, $size) = array_values($this->parseExpressionBlade($expression, 'button'));
+            $arguments = $this->parse($expression);
 
-            return $this->button($label, $class, $glyph, $size);
-        });
-
-        Blade::directive('alert', function($expression) {
-
-            list($class, $glyph, $message, $title) = array_values($this->parseExpressionBlade($expression, 'alert'));
-
-            return $this->alert($class, $glyph, $message, $title);
+            list($label, $args) = $this->getArguments($arguments);
+            return $this->button($label, $args);
         });
     }
 }

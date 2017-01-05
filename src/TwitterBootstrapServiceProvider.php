@@ -19,11 +19,6 @@ class TwitterBootstrapServiceProvider extends ServiceProvider
         // Register diretives Blade
         $this->registerDirectivesBlade();
 
-        // Config
-        $this->publishes([
-            __DIR__ . '/config/laravel-bootstrap.php' => config_path('laravel-bootstrap.php'),
-        ], 'config');
-
         // Resources
         $bootstrapVersion = "bootstrap-3.3.7-dist";
 
