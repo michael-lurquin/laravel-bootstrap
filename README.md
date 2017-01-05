@@ -58,12 +58,16 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ### Syntax ###
 
-| Directive Blade   |      Options      |  Optionnal      |
-|-------------------|:------------------|:----------------|
-| @glyph            | glyph             | NO              |
-| @button           | label             | YES             |
-|                   | class             | YES : 'default' |
-|                   | glyph             | YES             |
+| Directive Blade   |      Options      |  Optionnal        |
+|-------------------|:------------------|:------------------|
+| @glyph            | glyph             | NO                |
+| @button           | label             | YES               |
+|                   | class             | YES : 'default'   |
+|                   | glyph             | YES               |
+| @alert            | class             | YES : 'danger'    |
+|                   | glyph             | YES : 'info-sign' |
+|                   | message           | NO                |
+|                   | title             | YES               |
 
 ### Examples ###
 

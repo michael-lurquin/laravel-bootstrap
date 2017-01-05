@@ -47,14 +47,21 @@ trait BladeTwitterBootstrap
         $title = !empty($title) ? '<strong>' . $title . '</strong>' : '';
         $output = !empty($title) && !empty($glyph) ? $this->glyph($glyph) . '&nbsp;' . $title . '.' : '';
 
-        return "
-            <div class='alert alert-{$class} alert-dismissible' role='alert'>
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                </button>
-                {$output}
-                {$message}
-            </div>
-        ";
+        if ( empty($message) )
+        {
+            return '';
+        }
+        else
+        {
+            return "
+                <div class='alert alert-{$class} alert-dismissible' role='alert'>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    {$output}
+                    {$message}
+                </div>
+            ";
+        }
     }
 }
