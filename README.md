@@ -7,7 +7,7 @@ Expand Blade to generate Twitter Bootstrap code
 Add **BladeTwitterBootstrap** to your `composer.json` file to require :
 ```
 require : {
-    "laravel/framework": "~5.3",
+    "laravel/framework": "5.3.*",
     "michael-lurquin/laravel-bootstrap": "dev"
 }
 ```
@@ -38,7 +38,6 @@ A configuration is possible to change the default values of parameters passed to
 
 ```php
 return [
-    'bootstrap-version' => '3.3.7',
     'default_values' => [
         'button' => [
             'label' => '',
