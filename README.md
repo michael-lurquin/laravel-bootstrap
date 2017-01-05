@@ -21,7 +21,7 @@ composer update
 The next required step is to add the service provider to `config/app.php` :
 
 ```php
-BladeBootstrap\TwitterBootstrap\TwitterBootstrapServiceProvider::class,,
+BladeBootstrap\TwitterBootstrap\TwitterBootstrapServiceProvider::class,
 ```
 
 ### Publish ###
