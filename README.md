@@ -62,9 +62,9 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 | Directive Blade   |      Options      |  Optionnal      |
 |-------------------|:------------------|:----------------|
 | @glyph            | glyph             | NO              |
-| @button           | label             | YES : ''        |
+| @button           | label             | YES :           |
 |                   | class             | YES : 'default' |
-|                   | glyph             | YES : ''        |
+|                   | glyph             | YES :           |
 
 ### Examples ###
 
