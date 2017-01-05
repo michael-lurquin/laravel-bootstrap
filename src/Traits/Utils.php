@@ -28,6 +28,12 @@ trait Utils
         return $string;
     }
 
+    /**
+     * Parse expression Blade
+     * @param  [string] $expression [Parameter of directive Blade]
+     * @param  [boolean] $type      [Type of element HTML of TwitterBootstrap]
+     * @return [array]
+     */
     private function parseExpressionBlade($expression, $type = FALSE)
     {
         $result = FALSE;
@@ -43,7 +49,10 @@ trait Utils
 
                 foreach ($options as $key => $value)
                 {
-                    $result[$key] = empty($arr[$index]) ? $value : $this->removeQuotes($arr[$index]);
+                    $str = $this->removeQuotes($arr[$index]);
+
+                    $result[$key] = empty($str) ? $value : $str;
+
                     $index++;
                 }
             }

@@ -8,5 +8,11 @@ return [
             'glyph' => '',
             'size' => '',
         ],
+        'alert' => [
+            'class' => 'danger',
+            'glyph' => 'info-sign',
+            'title' => '',
+            'message' => '',
+        ],
     ],
 ];

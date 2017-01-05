@@ -26,5 +26,12 @@ trait DirectivesBlade
 
             return $this->button($label, $class, $glyph, $size);
         });
+
+        Blade::directive('alert', function($expression) {
+
+            list($class, $glyph, $message, $title) = array_values($this->parseExpressionBlade($expression, 'alert'));
+
+            return $this->alert($class, $glyph, $message, $title);
+        });
     }
 }
