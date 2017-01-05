@@ -38,9 +38,9 @@ Congratulations, you have successfully installed **BladeTwitterBootstrap** !
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
-### Documentation ###
+## Documentation ##
 
-## Syntax ##
+### Syntax ###
 
 You can set single or double quotation marks in Blade expressions
 
