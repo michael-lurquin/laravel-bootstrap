@@ -13,11 +13,13 @@ require : {
 ```
 
 Update Composer :
+
 ```bash
 composer update
 ```
 
 The next required step is to add the service provider to `config/app.php` :
+
 ```php
 BladeBootstrap\TwitterBootstrap\TwitterBootstrapServiceProvider::class,,
 ```
@@ -25,6 +27,7 @@ BladeBootstrap\TwitterBootstrap\TwitterBootstrapServiceProvider::class,,
 ### Publish ###
 
 The last required step is to publish views and assets in your application with :
+
 ```bash
 php artisan vendor:publish
 ```
@@ -33,7 +36,7 @@ Congratulations, you have successfully installed **BladeTwitterBootstrap** !
 
 ### License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ### Documentation ###
 
