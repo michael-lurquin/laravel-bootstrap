@@ -5,10 +5,12 @@ namespace BladeBootstrap\TwitterBootstrap;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use BladeBootstrap\TwitterBootstrap\Traits\BladeTwitterBootstrap;
+use BladeBootstrap\TwitterBootstrap\Traits\Utils;
 
 class TwitterBootstrapServiceProvider extends ServiceProvider
 {
     use BladeTwitterBootstrap;
+    use Utils;
 
     private $bootstrapVersion = 'bootstrap-3.3.7-dist';
 
@@ -19,15 +21,21 @@ class TwitterBootstrapServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('glyph', function ($glyph) {
-            return $this->glyph($glyph);
+        Blade::directive('glyph', function ($expression) {
+            return $this->glyph($expression);
         });
 
-        Blade::directive('button', function ($value, $class = 'default') {
+        Blade::directive('button', function ($expression) {
+
+            list($value, $class) = $this->parseExpressionBlade($expression);
+
             return $this->button($value, $class);
         });
 
-        Blade::directive('buttonGlyph', function ($glyph, $class = 'default') {
+        Blade::directive('buttonGlyph', function ($expression) {
+
+            list($glyph, $class) = $this->parseExpressionBlade($expression);
+
             return $this->buttonGlyph($glyph, $class);
         });
 

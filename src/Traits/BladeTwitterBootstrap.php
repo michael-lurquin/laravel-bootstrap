@@ -5,30 +5,6 @@ namespace BladeBootstrap\TwitterBootstrap\Traits;
 trait BladeTwitterBootstrap
 {
     /**
-     * Deleting single or double quotation marks at the beginning and end of the character string
-     *
-     * @param  [string] $string
-     * @return [string]
-     */
-    private function removeQuotes($string)
-    {
-        if ( !empty($string) )
-        {
-            if ( substr($string, 0, 1) === '"' )
-            {
-                return trim($string, '"');
-            }
-
-            if ( substr($string, 0, 1) === '\'' )
-            {
-                return trim($string, '\'');
-            }
-        }
-
-        return $string;
-    }
-
-    /**
      * Generate a "glyphicon" HTML tag
      *
      * @param  [string] $glyph [Name of the glyphicon (without the prefix 'glyphicon glyphicon-')]
