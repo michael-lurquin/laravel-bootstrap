@@ -30,16 +30,12 @@ trait Utils
 
     private function parseExpressionBlade($expression)
     {
-        $arr = explode(', ', trim($expression));
+        $arr = explode(', ', $expression);
 
-        $value = $arr[0];
-        $class = 'default';
+        $label =  empty($arr[0]) ? NULL       : $this->removeQuotes($arr[0]);
+        $class =  empty($arr[1]) ? 'default'  : $this->removeQuotes($arr[1]);
+        $glyph =  empty($arr[2]) ? NULL       : $this->removeQuotes($arr[2]);
 
-        if ( count($arr) > 1 )
-        {
-            $class = $arr[1];
-        }
-
-        return [$value, $class];
+        return compact('label', 'class', 'glyph');
     }
 }

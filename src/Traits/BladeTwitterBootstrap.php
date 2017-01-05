@@ -24,27 +24,10 @@ trait BladeTwitterBootstrap
      * @param  [string] $class [Button style (default, primary, success, info, warning, danger)]
      * @return [string]
      */
-    public function button($value, $class)
+    public function button($label, $class, $glyph)
     {
-        $value = $this->removeQuotes($value);
-        $class = $this->removeQuotes($class);
+        $output = !is_null($glyph) ? $this->glyph($glyph) . ' ' . $label : $label;
 
-        return "<button type='button' class='btn btn-{$class}'>{$value}</button>";
-    }
-
-    /**
-     * Generate a "button" HTML tag with a "glyphicon"
-     *
-     * @param  [string] $glyph [Name of the glyphicon (without the prefix 'glyphicon glyphicon-')]
-     * @param  [string] $class [Button style (default, primary, success, info, warning, danger)]
-     * @return [string]
-     */
-    public function buttonGlyph($glyph, $class)
-    {
-        $class = $this->removeQuotes($class);
-
-        $glyph = $this->glyph($glyph);
-
-        return "<button type='button' class='btn btn-{$class}'>{$glyph}</button>";
+        return "<button type='button' class='btn btn-{$class}'>{$output}</button>";
     }
 }
