@@ -4,64 +4,99 @@ namespace BladeBootstrap\TwitterBootstrap\Traits;
 
 trait Utils
 {
-    /**
-     * Deleting single or double quotation marks at the beginning and end of the character string
-     *
-     * @param  [string] $string
-     * @return [string]
-     */
-    private function removeQuotes($string)
+    public function parse($expression)
     {
-        if ( !empty($string) )
+        $explode = explode(',', $expression);
+
+        array_walk($explode, function(&$item) {
+          $item = trim($item, ' ');
+        });
+
+        $results = [];
+
+        if ( count($explode) > 1 )
         {
-            if ( substr($string, 0, 1) === '"' )
+            foreach ($explode as &$item)
             {
-                return trim($string, '"');
-            }
-
-            if ( substr($string, 0, 1) === '\'' )
-            {
-                return trim($string, '\'');
-            }
-        }
-
-        return $string;
-    }
-
-    /**
-     * Parse expression Blade
-     * @param  [string] $expression [Parameter of directive Blade]
-     * @param  [boolean] $type      [Type of element HTML of TwitterBootstrap]
-     * @return [array]
-     */
-    private function parseExpressionBlade($expression, $type = FALSE)
-    {
-        $result = FALSE;
-
-        if ( !empty($expression) )
-        {
-            $arr = explode(', ', $expression);
-
-            if ( $type )
-            {
-                $options = $this->app->config["laravel-bootstrap.default_values.$type"];
-                $index = 0;
-
-                foreach ($options as $key => $value)
+                if ( strpos($item, '=>') !== FALSE )
                 {
-                    $str = $this->removeQuotes($arr[$index]);
+                    $item = str_replace('"', '\'', $item);
+                    $item = str_replace('[', '', $item);
+                    $item = str_replace(']', '', $item);
+                    $item = str_replace(' =>', '=>', $item);
+                    $item = str_replace('=> ', '=>', $item);
 
-                    $result[$key] = empty($str) ? $value : $str;
+                    preg_match("/(.*)('=>'?)(.*)/i", $item, $matches);
 
-                    $index++;
+                    $results[trim($matches[1], '\'')] = trim($matches[3], '\'');
+                }
+                else
+                {
+                    $results[] = $item;
                 }
             }
-            else
-            {
-                $result = $this->removeQuotes($expression);
-            }
+        }
+        else
+        {
+          $results = $expression;
         }
 
-        return $result;
+        return $results;
+    }
+
+    public function appendAttributes($attributes)
+    {
+        $attr = '';
+
+        if ( !empty($attributes) )
+        {
+            $attr = ' ';
+
+            foreach ($attributes as $key => $value)
+            {
+                $attr .= "{$key}='{$value}' ";
+            }
+
+            $attr = rtrim($attr, ' ');
+        }
+
+        return $attr;
+    }
+
+    public function getArguments($arguments, $number = 1)
+    {
+        $args = [];
+
+        if ( !is_array($arguments) )
+        {
+            return [$arguments, $args];
+        }
+        else
+        {
+            $args = array_slice($arguments, $number);
+
+            if ( $number === 2 )
+            {
+                list($one, $two) = $arguments;
+                return [$one, $two, $args];
+            }
+            elseif ( $number === 3 )
+            {
+                list($one, $two, $three) = $arguments;
+                return [$one, $two, $three, $args];
+            }
+            elseif ( $number === 4 )
+            {
+                list($one, $two, $three, $four) = $arguments;
+                return [$one, $two, $three, $four, $args];
+            }
+            elseif ( $number === 5 )
+            {
+                list($one, $two, $three, $four, $five) = $arguments;
+                return [$one, $two, $three, $four, $five, $args];
+            }
+
+            return [$arguments[0], $args];
+        }
     }
 }
