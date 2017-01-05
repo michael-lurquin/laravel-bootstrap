@@ -59,12 +59,12 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ### Syntax ###
 
-| Directive Blade   |      Options      |  Optionnal    |
-|-------------------|:------------------|:--------------|
-| @glyph            | glyph             | NO            |
-| @button           | label             | YES (empty)   |
-|                   | class             | YES (default) |
-|                   | glyph             | YES (empty)   |
+| Directive Blade   |      Options      |  Optionnal      |
+|-------------------|:------------------|:----------------|
+| @glyph            | glyph             | NO              |
+| @button           | label             | YES : ''        |
+|                   | class             | YES : 'default' |
+|                   | glyph             | YES : ''        |
 
 ### Examples ###
 
