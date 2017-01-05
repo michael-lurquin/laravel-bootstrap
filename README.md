@@ -45,9 +45,9 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 | Directive Blade   |      Options      |  Optionnal                                       |
 |-------------------|:------------------|:-------------------------------------------------|
 | @glyph            | glyph             | NO                                               |
-|                   | glyphiconType     | 'fontawesome'                                    |
+|                   | glyphiconType     | YES                                              |
 | @button           | label             | YES                                              |
-|                   | class             | YES : 'default'                                  |
+|                   | class             | YES                                              |
 |                   | glyph             | YES                                              |
 |                   | array()           | List of attributes to add array('key' => 'value')|
 
