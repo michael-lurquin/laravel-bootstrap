@@ -26,7 +26,8 @@ trait BladeTwitterBootstrap
      */
     public function button($label, $class, $glyph)
     {
-        $output = !is_null($glyph) ? $this->glyph($glyph) . ' ' . $label : $label;
+        $label = is_null($label) ? '' : ' ' . $label;
+        $output = !is_null($glyph) ? $this->glyph($glyph) . $label : $label;
 
         return "<button type='button' class='btn btn-{$class}'>{$output}</button>";
     }
