@@ -1,0 +1,27 @@
+{
+    "name": "michael-lurquin/laravel-bootstrap",
+    "description": "Expand Blade to generate Twitter Bootstrap code",
+    "keywords": [
+        "framework",
+        "laravel",
+        "bootstrap",
+        "blade"
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "laravel/framework": "~5.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michaël Lurquin",
+            "email": "michael.lurquin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "BladeBootstrap\\TwitterBootstrap\\": "src/"
+        }
+    }
+}
