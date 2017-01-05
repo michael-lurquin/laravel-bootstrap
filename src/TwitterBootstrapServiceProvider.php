@@ -12,8 +12,6 @@ class TwitterBootstrapServiceProvider extends ServiceProvider
     use BladeTwitterBootstrap;
     use Utils;
 
-    private $bootstrapVersion = 'bootstrap-3.3.7-dist';
-
     /**
      * Bootstrap the application services.
      *
@@ -28,18 +26,25 @@ class TwitterBootstrapServiceProvider extends ServiceProvider
 
         Blade::directive('button', function ($expression) {
 
-            list($label, $class, $glyph) = array_values($this->parseExpressionBlade($expression));
+            list($label, $class, $glyph) = array_values($this->parseButtonExpressionBlade('button', $expression));
 
             return $this->button($label, $class, $glyph);
         });
 
+        // Config
+        $this->publishes([
+            __DIR__ . '/config/laravel-bootstrap.php' => config_path('laravel-bootstrap.php'),
+        ], 'config');
+
+        $bootstrapVersion = "bootstrap-{$this->app->config['laravel-bootstrap.bootstrap-version']}-dist";
+
         // Resources
         $this->publishes([
-            __DIR__ . "/resources/assets/{$this->bootstrapVersion}/css/bootstrap.min.css" => public_path('css/bootstrap.min.css'),
-            __DIR__ . "/resources/assets/{$this->bootstrapVersion}/js/bootstrap.min.js" => public_path('js/bootstrap.min.js'),
-            __DIR__ . "/resources/assets/{$this->bootstrapVersion}/fonts" => public_path('fonts'),
+            __DIR__ . "/resources/assets/{$bootstrapVersion}/css/bootstrap.min.css" => public_path('css/bootstrap.min.css'),
+            __DIR__ . "/resources/assets/{$bootstrapVersion}/js/bootstrap.min.js" => public_path('js/bootstrap.min.js'),
+            __DIR__ . "/resources/assets/{$bootstrapVersion}/fonts" => public_path('fonts'),
 
-            __DIR__ . "/resources/views/layouts/master.blade.php" => resource_path('views/layouts/master.blade.php'),
+            __DIR__ . '/resources/views/layouts/master.blade.php' => resource_path('views/layouts/master.blade.php'),
         ]);
     }
 

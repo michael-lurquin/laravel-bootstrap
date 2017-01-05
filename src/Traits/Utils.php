@@ -28,14 +28,21 @@ trait Utils
         return $string;
     }
 
-    private function parseExpressionBlade($expression)
+    private function parseButtonExpressionBlade($type, $expression)
     {
         $arr = explode(', ', $expression);
 
-        $label =  empty($arr[0]) ? NULL       : $this->removeQuotes($arr[0]);
-        $class =  empty($arr[1]) ? 'default'  : $this->removeQuotes($arr[1]);
-        $glyph =  empty($arr[2]) ? NULL       : $this->removeQuotes($arr[2]);
+        $options = $this->app->config["laravel-bootstrap.default_values.$type"];
 
-        return compact('label', 'class', 'glyph');
+        $result = [];
+        $index = 0;
+
+        foreach ($options as $key => $value)
+        {
+            $result[$key] = empty($arr[$index]) ? $value : $this->removeQuotes($arr[$index]);
+            $index++;
+        }
+
+        return $result;
     }
 }
