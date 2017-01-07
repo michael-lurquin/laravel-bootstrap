@@ -60,6 +60,7 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 | buttonToolbar | buttons | NO | array(url => label) |
 | | classActive | YES : 'primary' | |
 | | classNotActive | YES : 'default' | |
+| | sizeButton | YES | array('btn-group-lg', 'btn-group-sm', 'btn-group-xs') |
 | | ariaLabel | YES | |
 
 ### Examples ###

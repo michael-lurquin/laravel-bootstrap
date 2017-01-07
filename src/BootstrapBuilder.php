@@ -57,8 +57,8 @@ class BootstrapBuilder
         return view('bootstrap::dropdown', compact('title', 'links', 'class', 'id', 'openBottom'));
     }
 
-    public function buttonToolbar(array $buttons = [], $classActive = 'primary', $classNotActive = 'default', $ariaLabel = '')
+    public function buttonToolbar(array $buttons = [], $classActive = 'primary', $classNotActive = 'default', $sizeButton = '', $ariaLabel = '')
     {
-      return view('bootstrap::buttonToolbar', compact('buttons', 'classActive', 'classNotActive', 'ariaLabel'));
+      return view('bootstrap::buttonToolbar', compact('buttons', 'classActive', 'classNotActive', 'sizeButton', 'ariaLabel'));
     }
 }
