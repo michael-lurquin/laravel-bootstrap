@@ -15,7 +15,7 @@ class BootstrapBuilder
         $attributes['class'] = "glyphicon glyphicon-{$glyph}";
         $attributes['aria-hidden'] = 'true';
 
-        return "<span {$this->attributes($attributes)}></span>";
+        return view('bootstrap::glyph')->withAttributes($this->attributes($attributes));
     }
 
     public function button($label = '', $class = 'default', $options = [])
@@ -37,6 +37,6 @@ class BootstrapBuilder
 
         $attributes = $attributesDefault + $options;
 
-        return "<button {$this->attributes($attributes)}>{$label}</button>";
+        return view('bootstrap::button', compact('label'))->withAttributes($this->attributes($attributes));
     }
 }

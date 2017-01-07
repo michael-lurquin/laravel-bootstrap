@@ -2,7 +2,7 @@
 
 use Lurquinm\LaravelBootstrap\BootstrapBuilder;
 
-class BootstrapBuilderTest extends PHPUnit_Framework_TestCase
+class BootstrapBuilderTest extends TestCase
 {
     private $glyph = 'search';
     private $label = 'I\'m a button';

@@ -13,6 +13,8 @@ class LaravelBootstrapServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadViewsFrom(__DIR__ . '/Resources/views', 'bootstrap');
+
         // Resources
         $bootstrapVersion = "bootstrap-3.3.7-dist";
 
