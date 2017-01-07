@@ -48,12 +48,17 @@ class BootstrapBuilder
         return view('bootstrap::alert', compact('message', 'title', 'class', 'glyph', 'close'));
     }
 
-    public function dropdown($title, array $links, $class = 'default', $id = 'dropdownMenu1', $openBottom = TRUE)
+    public function dropdown($title, array $links = [], $class = 'default', $id = 'dropdownMenu1', $openBottom = TRUE)
     {
         $class = empty($class) ? 'danger' : $class;
         $id = empty($id) ? 'dropdownMenu1' : $id;
         $openBottom = $openBottom ? 'dropdown' : 'dropup';
 
         return view('bootstrap::dropdown', compact('title', 'links', 'class', 'id', 'openBottom'));
+    }
+
+    public function buttonToolbar(array $buttons = [], $classActive = 'primary', $classNotActive = 'default', $sizeButton = '', $ariaLabel = '')
+    {
+      return view('bootstrap::buttonToolbar', compact('buttons', 'classActive', 'classNotActive', 'sizeButton', 'ariaLabel'));
     }
 }
