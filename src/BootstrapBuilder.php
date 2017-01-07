@@ -18,6 +18,14 @@ class BootstrapBuilder
         return view('bootstrap::glyph')->withAttributes($this->attributes($attributes));
     }
 
+    public function ahref($url, $label, $class = '', $glyph = '', $options = [])
+    {
+        $class = !empty($class) ? "btn btn-{$class}" : '';
+        $label = !empty($glyph) ? self::SPACE . $label : $label;
+
+        return view('bootstrap::ahref', compact('url', 'label', 'class', 'glyph'))->withAttributes($this->attributes($options));
+    }
+
     public function button($label = '', $class = 'default', $options = [])
     {
         $attributesDefault['type'] = 'button';

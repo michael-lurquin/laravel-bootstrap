@@ -47,7 +47,12 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 | glyph | icon | NO | |
 | button | label | NO | |
 | | class | YES : 'default' | |
-| | attributes | YES : array(key => value) | |
+| | attributes | YES : array(attr => value) | |
+| ahref | url | NO | |
+| | label | NO | |
+| | class | YES | |
+| | glyph | YES | |
+| | attributes | YES : array(attr => value) | |
 | alert | message | NO | |
 | | title | YES | |
 | | class | YES = 'danger' | |
@@ -74,6 +79,8 @@ List of commands with the minimum number of parameters and which increases progr
 {!! Bootstrap::button('Je suis un bouton', 'primary') !!}
 {!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk']) !!}
 {!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk', 'glyph' => 'globe']) !!}
+
+{!! Bootstrap::ahref('/edit', 'Edit', 'primary', 'pencil') !!}
 
 {!! Bootstrap::alert('Enter a valid email address', 'Error', 'danger', 'star', FALSE) !!}
 
