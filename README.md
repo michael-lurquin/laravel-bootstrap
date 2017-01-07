@@ -75,10 +75,10 @@ List of commands with the minimum number of parameters and which increases progr
 ```html
 {!! Bootstrap::glyph('star') !!} // <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
 
-{!! Bootstrap::button('Je suis un bouton') !!}
-{!! Bootstrap::button('Je suis un bouton', 'primary') !!}
-{!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk']) !!}
-{!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk', 'glyph' => 'globe']) !!}
+{!! Bootstrap::button('I\'m a button') !!}
+{!! Bootstrap::button('I\'m a button', 'primary') !!}
+{!! Bootstrap::button('I\'m a button', 'primary', ['id' => 'btnOk']) !!}
+{!! Bootstrap::button('I\'m a button', 'primary', ['id' => 'btnOk', 'glyph' => 'globe']) !!}
 
 {!! Bootstrap::ahref('/edit', 'Edit', 'primary', 'pencil') !!}
 
