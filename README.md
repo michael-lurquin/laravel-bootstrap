@@ -1,10 +1,10 @@
-## Laravel Blade - TwitterBootstrap ##
+## Laravel - Bootstrap ##
 
-Expand Blade to generate Twitter Bootstrap code
+Generate Twitter Bootstrap code
 
 ### Installation ###
 
-Add **BladeTwitterBootstrap** to your `composer.json` file to require :
+Add **LaravelBootstrap** to your `composer.json` file to require :
 ```
 require : {
     "laravel/framework": "5.3.*",
@@ -21,7 +21,7 @@ composer update
 The next required step is to add the service provider to `config/app.php` :
 
 ```php
-BladeBootstrap\TwitterBootstrap\TwitterBootstrapServiceProvider::class,
+Lurquinm\LaravelBootstrap\LaravelBootstrapServiceProvider::class,
 ```
 
 ### Publish ###
@@ -32,7 +32,7 @@ The last required step is to publish views and assets in your application with :
 php artisan vendor:publish
 ```
 
-Congratulations, you have successfully installed **BladeTwitterBootstrap** !
+Congratulations, you have successfully installed **LaravelBootstrap** !
 
 ### License
 
@@ -42,28 +42,20 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ### Syntax ###
 
-| Directive Blade   |      Options      |  Optionnal                                       |
-|-------------------|:------------------|:-------------------------------------------------|
-| @glyph            | glyph             | NO                                               |
-|                   | glyphiconType     | YES                                              |
-| @button           | label             | YES                                              |
-|                   | class             | YES                                              |
-|                   | glyph             | YES                                              |
-|                   | array()           | List of attributes to add array('key' => 'value')|
+| Name | Options | Optionnal |
+|------|---------|-----------|
+| glyph | icon | NO |
+| button | label | NO |
+| | class | YES : 'default' |
+| | attributes | YES : array(key => value) |
 
 ### Examples ###
 
-**Warning**, You should not put quotation marks in the Blade directive settings except in the array of attributes to add to the HTML Bootstrap elements
+```html
+{!! Bootstrap::glyph('star') !!} // <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
 
-```php
-@glyph(euro)                    // <span class='glyphicon glyphicon-euro' aria-hidden='true'></span>
-
-@glyph(euro)
-@glyph(filter, ['glyphiconType' => 'fontawesome'])
-
-@button(One)
-@button(Two, ['class' => 'danger'])
-@button(Three, ['class' => 'primary', 'glyph' => 'search'])
-@button(, ['class' => 'success', 'glyph' => 'heart'])
-@button(Six, ['class' => 'info', 'glyph' => 'euro', 'id' => 'toto'])
+{!! Bootstrap::button('Je suis un bouton') !!}
+{!! Bootstrap::button('Je suis un bouton', 'primary') !!}
+{!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk']) !!}
+{!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk', 'glyph' => 'globe']) !!}
 ```

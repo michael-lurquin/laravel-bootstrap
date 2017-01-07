@@ -1,102 +1,66 @@
 <?php
 
-namespace BladeBootstrap\TwitterBootstrap\Traits;
+namespace Lurquinm\LaravelBootstrap\Traits;
 
 trait Utils
 {
-    public function parse($expression)
+    /**
+     * Convert all applicable characters to HTML entities.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function escapeAll($value)
     {
-        $explode = explode(',', $expression);
-
-        array_walk($explode, function(&$item) {
-          $item = trim($item, ' ');
-        });
-
-        $results = [];
-
-        if ( count($explode) > 1 )
-        {
-            foreach ($explode as &$item)
-            {
-                if ( strpos($item, '=>') !== FALSE )
-                {
-                    $item = str_replace('"', '\'', $item);
-                    $item = str_replace('[', '', $item);
-                    $item = str_replace(']', '', $item);
-                    $item = str_replace(' =>', '=>', $item);
-                    $item = str_replace('=> ', '=>', $item);
-
-                    preg_match("/(.*)('=>'?)(.*)/i", $item, $matches);
-
-                    $results[trim($matches[1], '\'')] = trim($matches[3], '\'');
-                }
-                else
-                {
-                    $results[] = $item;
-                }
-            }
-        }
-        else
-        {
-          $results = $expression;
-        }
-
-        return $results;
+        return htmlentities($value, ENT_QUOTES, 'UTF-8');
     }
 
-    public function appendAttributes($attributes)
+    /**
+     * Build an HTML attribute string from an array.
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public function attributes(array $attributes)
     {
-        $attr = '';
+        $html = [];
 
-        if ( !empty($attributes) )
+        foreach ($attributes as $key => $value)
         {
-            $attr = ' ';
+            $element = $this->attributeElement($key, $value);
 
-            foreach ($attributes as $key => $value)
+            if ( !is_null($element) )
             {
-                $attr .= "{$key}='{$value}' ";
+                $html[] = $element;
             }
-
-            $attr = rtrim($attr, ' ');
         }
 
-        return $attr;
+        return count($html) > 0 ? implode(' ', $html) : '';
     }
 
-    public function getArguments($arguments, $number = 1)
+    /**
+     * Build a single attribute element.
+     *
+     * @param string $key
+     * @param string $value
+     *
+     * @return string
+     */
+    private function attributeElement($key, $value)
     {
-        $args = [];
-
-        if ( !is_array($arguments) )
+        // For numeric keys we will assume that the key and the value are the same
+        // as this will convert HTML attributes such as "required" to a correct
+        // form like required="required" instead of using incorrect numerics.
+        if ( is_numeric($key) )
         {
-            return [$arguments, $args];
+            $key = $value;
         }
-        else
+
+        if ( !is_null($value) )
         {
-            $args = array_slice($arguments, $number);
-
-            if ( $number === 2 )
-            {
-                list($one, $two) = $arguments;
-                return [$one, $two, $args];
-            }
-            elseif ( $number === 3 )
-            {
-                list($one, $two, $three) = $arguments;
-                return [$one, $two, $three, $args];
-            }
-            elseif ( $number === 4 )
-            {
-                list($one, $two, $three, $four) = $arguments;
-                return [$one, $two, $three, $four, $args];
-            }
-            elseif ( $number === 5 )
-            {
-                list($one, $two, $three, $four, $five) = $arguments;
-                return [$one, $two, $three, $four, $five, $args];
-            }
-
-            return [$arguments[0], $args];
+            return "{$key}='{$this->escapeAll($value)}'";
         }
     }
 }
