@@ -54,9 +54,13 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 | | glyph | YES | |
 | | close | YES : 'TRUE' | |
 | dropdown | label | NO | |
-| | links | YES : array(key => value) | |
+| | links | YES : array(url => label) | |
 | | id | YES : 'dropdownMenu1' | array('divider', 'dropdown-header', 'disabled', 'active') |
 | | openBottom | YES : TRUE | |
+| buttonToolbar | buttons | NO | array(url => label) |
+| | classActive | YES : 'primary' | |
+| | classNotActive | YES : 'default' | |
+| | ariaLabel | YES | |
 
 ### Examples ###
 
@@ -73,4 +77,6 @@ List of commands with the minimum number of parameters and which increases progr
 {!! Bootstrap::alert('Enter a valid email address', 'Error', 'danger', 'star', FALSE) !!}
 
 {!! Bootstrap::dropdown('Dropdown', ['dropdown-header' => 'Header', '/home' => 'Home', 'divider' => '', 'active' => 'About'], 'primary', 'dropdownMenu1', FALSE) !!}
+
+{!! Bootstrap::buttonToolbar(['/home' => 'Left', 'active' => 'Middle', '/about' => 'Right'], 'danger', 'default') !!}
 ```
