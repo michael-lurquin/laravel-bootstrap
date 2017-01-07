@@ -42,14 +42,25 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ### Syntax ###
 
-| Name | Options | Optionnal |
-|------|---------|-----------|
-| glyph | icon | NO |
-| button | label | NO |
-| | class | YES : 'default' |
-| | attributes | YES : array(key => value) |
+| Name | Options | Optionnal | Extras |
+|------|---------|-----------|--------|
+| glyph | icon | NO | |
+| button | label | NO | |
+| | class | YES : 'default' | |
+| | attributes | YES : array(key => value) | |
+| alert | message | NO | |
+| | title | YES | |
+| | class | YES = 'danger' | |
+| | glyph | YES | |
+| | close | YES : 'TRUE' | |
+| dropdown | label | NO | |
+| | links | YES : array(key => value) | |
+| | id | YES : 'dropdownMenu1' | array('divider', 'dropdown-header', 'disabled', 'active') |
+| | openBottom | YES : TRUE | |
 
 ### Examples ###
+
+List of commands with the minimum number of parameters and which increases progressively.
 
 ```html
 {!! Bootstrap::glyph('star') !!} // <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
@@ -58,4 +69,8 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 {!! Bootstrap::button('Je suis un bouton', 'primary') !!}
 {!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk']) !!}
 {!! Bootstrap::button('Je suis un bouton', 'primary', ['id' => 'btnOk', 'glyph' => 'globe']) !!}
+
+{!! Bootstrap::alert('Enter a valid email address', 'Error', 'danger', 'star', FALSE) !!}
+
+{!! Bootstrap::dropdown('Dropdown', ['dropdown-header' => 'Header', '/home' => 'Home', 'divider' => '', 'active' => 'About'], 'primary', 'dropdownMenu1', FALSE) !!}
 ```

@@ -8,12 +8,14 @@ class BootstrapBuilder
 {
     use Utils;
 
+    const SPACE = '&nbsp;';
+
     public function glyph($glyph)
     {
         $attributes['class'] = "glyphicon glyphicon-{$glyph}";
         $attributes['aria-hidden'] = 'true';
 
-        return "<span {$this->attributes($attributes)}></span>";
+        return view('bootstrap::glyph')->withAttributes($this->attributes($attributes));
     }
 
     public function button($label = '', $class = 'default', $options = [])
@@ -25,16 +27,33 @@ class BootstrapBuilder
         {
             if ( !empty($label) )
             {
-                $label = "&nbsp;{$label}";
+                $label = self::SPACE . $label;
             }
 
             $label = PHP_EOL . $this->glyph($options['glyph']) . $label . PHP_EOL;
-            
+
             unset($options['glyph']);
         }
 
         $attributes = $attributesDefault + $options;
 
-        return "<button {$this->attributes($attributes)}>{$label}</button>";
+        return view('bootstrap::button', compact('label'))->withAttributes($this->attributes($attributes));
+    }
+
+    public function alert($message, $title = '', $class = 'danger', $glyph = '', $close = TRUE)
+    {
+        $title = empty($title) ? '' : self::SPACE . "{$title}." . self::SPACE;
+        $class = empty($class) ? 'danger' : $class;
+
+        return view('bootstrap::alert', compact('message', 'title', 'class', 'glyph', 'close'));
+    }
+
+    public function dropdown($title, array $links, $class = 'default', $id = 'dropdownMenu1', $openBottom = TRUE)
+    {
+        $class = empty($class) ? 'danger' : $class;
+        $id = empty($id) ? 'dropdownMenu1' : $id;
+        $openBottom = $openBottom ? 'dropdown' : 'dropup';
+
+        return view('bootstrap::dropdown', compact('title', 'links', 'class', 'id', 'openBottom'));
     }
 }
