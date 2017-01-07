@@ -8,6 +8,8 @@ class BootstrapBuilder
 {
     use Utils;
 
+    const SPACE = '&nbsp;';
+
     public function glyph($glyph)
     {
         $attributes['class'] = "glyphicon glyphicon-{$glyph}";
@@ -25,11 +27,11 @@ class BootstrapBuilder
         {
             if ( !empty($label) )
             {
-                $label = "&nbsp;{$label}";
+                $label = self::SPACE . $label;
             }
 
             $label = PHP_EOL . $this->glyph($options['glyph']) . $label . PHP_EOL;
-            
+
             unset($options['glyph']);
         }
 

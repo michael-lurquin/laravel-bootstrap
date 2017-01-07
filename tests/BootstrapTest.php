@@ -9,6 +9,8 @@ class BootstrapBuilderTest extends PHPUnit_Framework_TestCase
     private $class = 'primary';
     private $id = 'button';
 
+    const SPACE = '&nbsp;';
+
     public function setUp()
     {
         $this->bootstrapBuilder = new BootstrapBuilder();
@@ -53,6 +55,6 @@ class BootstrapBuilderTest extends PHPUnit_Framework_TestCase
     {
         $button = $this->bootstrapBuilder->button($this->label, $this->class, ['id' => $this->id, 'glyph' => $this->glyph]);
 
-        $this->assertEquals("<button type='button' class='btn btn-{$this->class}' id='{$this->id}'>" . PHP_EOL . "<span class='glyphicon glyphicon-{$this->glyph}' aria-hidden='true'></span>&nbsp;{$this->label}" . PHP_EOL . "</button>", $button);
+        $this->assertEquals("<button type='button' class='btn btn-{$this->class}' id='{$this->id}'>" . PHP_EOL . "<span class='glyphicon glyphicon-{$this->glyph}' aria-hidden='true'></span>" . self::SPACE . "{$this->label}" . PHP_EOL . "</button>", $button);
     }
 }
