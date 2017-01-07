@@ -41,4 +41,18 @@ class BootstrapBuilderTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals("<button type='button' class='btn btn-{$this->class}' id='{$this->id}'>{$this->label}</button>", $button);
     }
+
+    public function testButtonWithClassAttributesGlyph()
+    {
+        $button = $this->bootstrapBuilder->button('', $this->class, ['id' => $this->id, 'glyph' => $this->glyph]);
+
+        $this->assertEquals("<button type='button' class='btn btn-{$this->class}' id='{$this->id}'>" . PHP_EOL . "<span class='glyphicon glyphicon-{$this->glyph}' aria-hidden='true'></span>" . PHP_EOL . "</button>", $button);
+    }
+
+    public function testButtonWithLabelClassAttributesGlyph()
+    {
+        $button = $this->bootstrapBuilder->button($this->label, $this->class, ['id' => $this->id, 'glyph' => $this->glyph]);
+
+        $this->assertEquals("<button type='button' class='btn btn-{$this->class}' id='{$this->id}'>" . PHP_EOL . "<span class='glyphicon glyphicon-{$this->glyph}' aria-hidden='true'></span>&nbsp;{$this->label}" . PHP_EOL . "</button>", $button);
+    }
 }
